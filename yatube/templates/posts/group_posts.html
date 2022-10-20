@@ -1,10 +1,22 @@
 ﻿<!-- templates/posts/index.html -->
 <!DOCTYPE html> 
-<html lang="ru">
-  <head>
-  <title>{{title}}</title>
-  </head>
-  <body>
-    <h1>{{text}}</h1>
-  </body>
-</html> 
+{%extends 'includes/base.html'%}
+  {%block title%}
+    <title>Группы</title>
+  {%endblock%}
+   {%block content%}
+<p>
+          {{titleGroup}}
+        </p>
+   {% for post in posts %}
+  <ul>
+    <li>
+      Автор: {{ post.author.get_full_name }}
+    </li>
+    <li>
+      Дата публикации: {{ post.pub_date|date:"d E Y" }}
+    </li>
+  </ul>
+  <p>{{ post.text }}</p>
+  {%endfor%}
+   {% endblock %}
